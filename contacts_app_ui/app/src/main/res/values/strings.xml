@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">contacts_app_ui</string>
+    <string name="appbar_title">Contacts</string>
+    <string name="contacts">All contacts</string>
+    <string name="groups">Groups</string>
+    <string name="sim">Sim for calls</string>
+    <string name="manage">Manage contacts</string>
+    <string name="recycle_bin">Recycle bin</string>
+    <string name="settings">Settings</string>
 </resources>
