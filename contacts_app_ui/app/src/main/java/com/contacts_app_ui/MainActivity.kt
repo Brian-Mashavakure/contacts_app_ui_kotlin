@@ -11,13 +11,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.contacts_app_ui.screens.MainScreen
+import com.contacts_app_ui.screens.NavGraphs
 import com.contacts_app_ui.ui.theme.Contacts_app_uiTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+            DestinationsNavHost(navGraph = NavGraphs.root)
         }
     }
 }

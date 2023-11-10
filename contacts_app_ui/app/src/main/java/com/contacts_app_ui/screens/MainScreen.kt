@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -37,14 +38,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.contacts_app_ui.R
 import com.contacts_app_ui.componets.DrawerItem
+import com.contacts_app_ui.screens.destinations.AddContactDestination
+import com.contacts_app_ui.screens.destinations.CodeScannerDestination
+import com.contacts_app_ui.screens.destinations.SearchContactDestination
 import com.contacts_app_ui.ui.theme.LighterSecondaryColor
 import com.contacts_app_ui.ui.theme.PrimaryColor
 import com.contacts_app_ui.ui.theme.SecondaryColor
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 
+@Destination(start = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(){
+fun MainScreen(
+    navigator: DestinationsNavigator
+){
+
 
     //list of navigation bar items
     val drawerItems = listOf(
@@ -131,7 +141,8 @@ fun MainScreen(){
                                 .padding(NavigationDrawerItemDefaults.ItemPadding),
                             colors = NavigationDrawerItemDefaults.colors(
                                 selectedContainerColor = LighterSecondaryColor,
-                                unselectedContainerColor = SecondaryColor
+                                unselectedContainerColor = SecondaryColor,
+                                unselectedTextColor = Color.Black,
                             )
 
                         )
@@ -172,7 +183,9 @@ fun MainScreen(){
                         actions = {
                             //search icon
                             IconButton(
-                                onClick = { /*TODO*/ }
+                                onClick = {
+                                    navigator.navigate(SearchContactDestination)
+                                }
                             ) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.search),
@@ -183,7 +196,9 @@ fun MainScreen(){
 
                             //add more icon
                             IconButton(
-                                onClick = { /*TODO*/ }
+                                onClick = {
+                                    navigator.navigate(AddContactDestination)
+                                }
                             ) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.add),
@@ -194,11 +209,13 @@ fun MainScreen(){
 
                             //options icon
                             IconButton(
-                                onClick = { /*TODO*/ }
+                                onClick = {
+                                    navigator.navigate(CodeScannerDestination)
+                                }
                             ) {
                                 Icon(
-                                    painter = painterResource(id = R.drawable.options),
-                                    contentDescription = "Options Icon"
+                                    painter = painterResource(id = R.drawable.qr_code),
+                                    contentDescription = "QR Code Icon"
                                 )
 
                             }
@@ -220,8 +237,3 @@ fun MainScreen(){
 
 }
 
-@Preview
-@Composable
-fun MainScreenPreview(){
-    MainScreen()
-}
