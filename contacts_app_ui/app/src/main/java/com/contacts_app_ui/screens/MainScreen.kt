@@ -45,8 +45,10 @@ import com.contacts_app_ui.ui.theme.LighterSecondaryColor
 import com.contacts_app_ui.ui.theme.PrimaryColor
 import com.contacts_app_ui.ui.theme.SecondaryColor
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
+
 
 @Destination(start = true)
 @OptIn(ExperimentalMaterial3Api::class)
