@@ -1,11 +1,15 @@
 package com.contacts_app_ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -37,10 +41,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.contacts_app_ui.R
+import com.contacts_app_ui.componets.Contact
+import com.contacts_app_ui.componets.ContactComponent
 import com.contacts_app_ui.componets.DrawerItem
 import com.contacts_app_ui.screens.destinations.AddContactDestination
 import com.contacts_app_ui.screens.destinations.CodeScannerDestination
 import com.contacts_app_ui.screens.destinations.SearchContactDestination
+import com.contacts_app_ui.screens.destinations.ViewContactScreenDestination
 import com.contacts_app_ui.ui.theme.LighterSecondaryColor
 import com.contacts_app_ui.ui.theme.PrimaryColor
 import com.contacts_app_ui.ui.theme.SecondaryColor
@@ -56,6 +63,95 @@ import kotlinx.coroutines.launch
 fun MainScreen(
     navigator: DestinationsNavigator
 ){
+
+    //list of contact names
+    val contactNames = listOf(
+        Contact(
+            name = " Amai ", 
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Amelia ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Anakin ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Anesu ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Ban ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Brian ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Cillian ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Darth Vader ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Dazai ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Eriksen ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Emiya ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Fagioli ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Goku ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Grandmaster Zeno ", 
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Kakarot ",
+            number = " 0772676611"
+        ),
+
+        Contact(
+            name = " Lucas ", 
+            number = " 0772676611"
+        ),
+        
+        Contact(
+            name = " Maximus ", 
+            number = " 0772676611"
+        ),
+
+    )
 
 
     //list of navigation bar items
@@ -227,9 +323,34 @@ fun MainScreen(
 
                 }
             ) {innerPadding ->
-                Column(
-                    modifier = Modifier.padding(innerPadding)
-                ){}
+                Surface(
+                    modifier = Modifier.fillMaxWidth().padding(innerPadding),
+                    color = PrimaryColor
+                ){
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        content = {
+                            itemsIndexed(
+                                contactNames
+                            ){
+                                    index, contactName -> ContactComponent(
+                                modifier = Modifier.padding(5.dp).clickable {
+                                    navigator.navigate(
+                                        ViewContactScreenDestination(
+                                            Contact(
+                                                name = contactName.name,
+                                                number = contactName.number
+                                            )
+                                        )
+                                    )
+                                },
+                                contactName = contactName.name
+                            )
+                            }
+                        }
+                    )
+                }
 
             }
 
