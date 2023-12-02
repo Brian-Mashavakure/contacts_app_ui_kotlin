@@ -93,11 +93,14 @@ fun CustomTextField(
 
 
 @Composable
-fun PictureIcon(){
+fun PictureIcon(
+    painterResource: Painter,
+    backgroundColor: Color,
+){
     Box(
         modifier = Modifier
             .clip(shape = RoundedCornerShape(80))
-            .background(PeachColor)
+            .background(backgroundColor)
             .width(120.dp)
             .height(120.dp)
             .padding(4.dp),
@@ -105,7 +108,7 @@ fun PictureIcon(){
     ){
         Icon(
             modifier = Modifier.size(50.dp),
-            painter = painterResource(id = R.drawable.photo_camera),
+            painter = painterResource,
             contentDescription = "Camera icon",
             tint = Color.White
         )

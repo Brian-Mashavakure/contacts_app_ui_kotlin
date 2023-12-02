@@ -32,6 +32,7 @@ import com.contacts_app_ui.R
 import com.contacts_app_ui.componets.CustomTextField
 import com.contacts_app_ui.componets.PictureIcon
 import com.contacts_app_ui.screens.destinations.MainScreenDestination
+import com.contacts_app_ui.ui.theme.PeachColor
 import com.contacts_app_ui.ui.theme.PrimaryColor
 import com.contacts_app_ui.ui.theme.SecondaryColor
 import com.ramcosta.composedestinations.annotation.Destination
@@ -113,7 +114,10 @@ fun AddContact(
                         modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center,
                     ){
-                        PictureIcon()
+                        PictureIcon(
+                            painterResource = painterResource(id = R.drawable.photo_camera),
+                            backgroundColor = PeachColor,
+                        )
                     }
 
                     Spacer(modifier = Modifier.height(25.dp))

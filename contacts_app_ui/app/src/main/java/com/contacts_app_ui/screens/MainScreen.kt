@@ -308,7 +308,7 @@ fun MainScreen(
                             //options icon
                             IconButton(
                                 onClick = {
-                                    navigator.navigate(CodeScannerDestination)
+                                    
                                 }
                             ) {
                                 Icon(
